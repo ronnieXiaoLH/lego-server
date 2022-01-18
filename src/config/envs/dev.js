@@ -7,4 +7,11 @@ module.exports = {
     port: 3306,
     database: 'lego',
   },
+
+  // mongodb 连接配置
+  mongodbConf: {
+    host: 'localhost',
+    port: '27017',
+    dbName: 'lego',
+  },
 }

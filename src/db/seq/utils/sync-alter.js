@@ -28,7 +28,7 @@ async function syncDb() {
       renamed,
     } = await git.status()
     const fileChanged = modified.concat([
-      ...not_added,
+      ...notAdded,
       ...created,
       ...deleted,
       ...renamed,
