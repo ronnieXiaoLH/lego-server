@@ -3,6 +3,7 @@ const testMysqlConnect = require('../db/mysql2')
 const package = require('../../package.json')
 const { ENV } = require('../utils/env')
 const WorkModel = require('../models/WorkModel')
+const { cacheGet, cacheSet } = require('../cache')
 
 router.get('/', function* (next) {
   yield this.render('index', {
@@ -30,6 +31,10 @@ router.get('/api/db-check', function* (next) {
     mongodbConn = false
   }
 
+  // 测试 redis 连接
+  cacheSet('name', 'lego server ok - by redis')
+  const redisTestVal = yield cacheGet('name')
+
   this.body = {
     errno: 0,
     data: {
@@ -38,6 +43,7 @@ router.get('/api/db-check', function* (next) {
       ENV,
       mysqlConn: mysqlRes.length > 0,
       mongodbConn,
+      redisConn: redisTestVal !== null,
     },
   }
 })
