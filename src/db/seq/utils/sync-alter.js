@@ -42,7 +42,7 @@ async function syncDb() {
         return false
       })
       // 没有改动同步数据库的相关文件
-      if (!fileChanged) {
+      if (!changedDbFiles) {
         needToSyncDb = false
       }
     }
