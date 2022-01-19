@@ -8,7 +8,6 @@ if (password) {
   opts.password = password // prd 环境需要密码
 }
 const redisClient = redis.createClient(port, host, opts)
-console.log(redisClient)
 redisClient.on('error', (err) => {
   console.error('redis connect error', err)
 })
