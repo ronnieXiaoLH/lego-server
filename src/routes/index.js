@@ -1,6 +1,6 @@
-var router = require('koa-router')()
+const router = require('koa-router')()
 const testMysqlConnect = require('../db/mysql2')
-const package = require('../../package.json')
+const pkg = require('../../package.json')
 const { ENV } = require('../utils/env')
 const WorkModel = require('../models/WorkModel')
 const { cacheGet, cacheSet } = require('../cache')
@@ -27,7 +27,7 @@ router.get('/api/db-check', async (ctx, next) => {
     errno: 0,
     data: {
       name: 'lego server',
-      version: package.version,
+      version: pkg.version,
       ENV,
       mysqlConn: mysqlRes.length > 0,
       mongodbConn,
