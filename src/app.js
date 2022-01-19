@@ -1,12 +1,13 @@
 const Koa = require('koa')
 const views = require('koa-views')
 const json = require('koa-json')
-const onerror = require('koa-onerror');
+const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
 const index = require('./routes/index')
 const jwt = require('./middleware/jwt')
+const cors = require('./middleware/cors')
 
 const app = new Koa()
 
@@ -14,6 +15,7 @@ const app = new Koa()
 onerror(app)
 
 app.use(jwt)
+app.use(cors)
 
 // global middlewares
 app.use(

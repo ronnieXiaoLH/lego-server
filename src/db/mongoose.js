@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { mongodbConf } = require('../config/envs/dev')
+const { mongodbConf } = require('../config')
 
 const { host, port, dbName, user, password } = mongodbConf
 
