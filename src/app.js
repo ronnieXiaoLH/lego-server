@@ -18,6 +18,7 @@ app.use(jwt)
 // global middlewares
 app.use(
   views('views', {
+    // eslint-disable-next-line
     root: __dirname + '/views',
     default: 'ejs',
   })
