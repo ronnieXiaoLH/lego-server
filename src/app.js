@@ -1,17 +1,19 @@
-var app = require('koa')(),
-  logger = require('koa-logger'),
-  json = require('koa-json'),
-  views = require('koa-views'),
-  onerror = require('koa-onerror')
+const Koa = require('koa')
+const views = require('koa-views')
+const json = require('koa-json')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
+const logger = require('koa-logger')
 
-var index = require('./routes/index')
-var users = require('./routes/users')
+const index = require('./routes/index')
 const jwt = require('./middleware/jwt')
+
+const app = new Koa()
 
 // error handler
 onerror(app)
 
-app.use(jwt)
+// app.use(jwt)
 
 // global middlewares
 app.use(
@@ -20,22 +22,21 @@ app.use(
     default: 'ejs',
   })
 )
-app.use(require('koa-bodyparser')())
+app.use(bodyparser())
 app.use(json())
 app.use(logger())
 
-app.use(function* (next) {
+app.use(async (ctx, next) => {
   var start = new Date()
-  yield next
+  await next()
   var ms = new Date() - start
-  console.log('%s %s - %s', this.method, this.url, ms)
+  console.log('%s %s - %s', ctx.method, ctx.url, ms)
 })
 
 app.use(require('koa-static')(__dirname + '/public'))
 
 // routes definition
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
