@@ -7,12 +7,18 @@
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
     "prd": "cross-env NODE_ENV=production pm2 start bin/www",
     "test:local": "cross-env NODE_ENV=test_local jest --runInBand --passWithNoTests --colors --forceExit",
-    "lint": "eslint src/"
+    "lint": "eslint \"src/**/*.{js,ts}\""
   },
   "husky": {
     "hooks": {
-    "pre-commit": "npm run lint & npm run test:local"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "npm run test:local"
+    ]
   },
   "dependencies": {
     "axios": "^0.25.0",
@@ -33,6 +39,7 @@
     "koa-router": "^7.1.1",
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
+    "lint-staged": "^12.2.0",
     "mongoose": "^5.10.4",
     "mysql2": "^2.3.3",
     "redis": "^3.0.2",
