@@ -1,7 +1,7 @@
 const Koa = require('koa')
 const views = require('koa-views')
 const json = require('koa-json')
-const onerror = require('koa-onerror')
+const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
@@ -13,11 +13,12 @@ const app = new Koa()
 // error handler
 onerror(app)
 
-// app.use(jwt)
+app.use(jwt)
 
 // global middlewares
 app.use(
   views('views', {
+    // eslint-disable-next-line
     root: __dirname + '/views',
     default: 'ejs',
   })
@@ -33,6 +34,7 @@ app.use(async (ctx, next) => {
   console.log('%s %s - %s', ctx.method, ctx.url, ms)
 })
 
+// eslint-disable-next-line
 app.use(require('koa-static')(__dirname + '/public'))
 
 // routes definition

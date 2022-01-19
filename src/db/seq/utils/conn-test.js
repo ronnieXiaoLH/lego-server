@@ -9,5 +9,6 @@ seq
     console.log('fail')
   })
   .finally(() => {
+    // eslint-disable-next-line
     process.exit()
   })

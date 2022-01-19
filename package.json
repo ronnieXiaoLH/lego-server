@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www",
-    "test:local": "cross-env NODE_ENV=test_local jest --runInBand --passWithNoTests --colors --forceExit"
+    "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
+    "prd": "cross-env NODE_ENV=production pm2 start bin/www",
+    "test:local": "cross-env NODE_ENV=test_local jest --runInBand --passWithNoTests --colors --forceExit",
+    "lint": "eslint src/"
   },
   "dependencies": {
     "axios": "^0.25.0",
@@ -36,6 +37,7 @@
     "supertest": "^6.2.2"
   },
   "devDependencies": {
+    "eslint": "^8.7.0",
     "nodemon": "^1.8.1"
   }
 }
