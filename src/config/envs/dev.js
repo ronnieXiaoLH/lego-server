@@ -26,4 +26,7 @@ module.exports = {
 
   // 短信验证码缓存时间，单位秒
   msgVericodeTimeout: 2 * 60,
+
+  // jwt 过期时间
+  jwtExpiresIn: '1d', // 1. 字符串，如 '1h' '2d'； 2. 数字，单位是 s
 }

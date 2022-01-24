@@ -26,6 +26,7 @@
     "axios": "^0.25.0",
     "co": "^4.6.0",
     "cross-env": "^7.0.3",
+    "crypto": "^1.0.1",
     "debug": "^2.6.3",
     "ejs": "~2.3.3",
     "husky": "^4.3.8",
@@ -43,6 +44,7 @@
     "koa-views": "^5.2.1",
     "koa2-cors": "^2.0.6",
     "lint-staged": "^12.2.0",
+    "lodash": "^4.17.21",
     "mongoose": "^5.10.4",
     "mysql2": "^2.3.3",
     "redis": "^3.0.2",
@@ -50,7 +52,8 @@
     "require-all": "^3.0.0",
     "sequelize": "^6.3.5",
     "simple-git": "^2.48.0",
-    "supertest": "^6.2.2"
+    "supertest": "^6.2.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^8.7.0",

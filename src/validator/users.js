@@ -16,6 +16,20 @@ const phoneNumberSchema = {
   },
 }
 
+// 手机号 + 短信验证码 schema
+const userInfoSchema = {
+  type: 'object',
+  required: ['phoneNumber', 'veriCode'],
+  properties: {
+    phoneNumber: phoneNumberRule,
+    veriCode: {
+      type: 'string',
+      pattern: '^\\d{4}$',
+    },
+  },
+}
+
 module.exports = {
   phoneNumberSchema,
+  userInfoSchema,
 }
