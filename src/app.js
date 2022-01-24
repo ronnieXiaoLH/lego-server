@@ -5,9 +5,11 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const index = require('./routes/index')
 const jwt = require('./middleware/jwt')
 const cors = require('./middleware/cors')
+
+const index = require('./routes/index')
+const user = require('./routes/user')
 
 const app = new Koa()
 
@@ -41,6 +43,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 
 // routes definition
 app.use(index.routes(), index.allowedMethods())
+app.use(user.routes(), user.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

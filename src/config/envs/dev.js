@@ -22,5 +22,8 @@ module.exports = {
   },
 
   // cors origin
-  corsOrigin: '*'
+  corsOrigin: '*',
+
+  // 短信验证码缓存时间，单位秒
+  msgVericodeTimeout: 2 * 60,
 }
