@@ -17,7 +17,7 @@ const phoneNumberSchema = {
 }
 
 // 手机号 + 短信验证码 schema
-const userInfoSchema = {
+const phoneNumberVeriCodeSchema = {
   type: 'object',
   required: ['phoneNumber', 'veriCode'],
   properties: {
@@ -29,7 +29,30 @@ const userInfoSchema = {
   },
 }
 
+// 用户信息 schema
+const userInfoSchema = {
+  type: 'object',
+  required: ['nickName', 'gender'],
+  properties: {
+    nickName: {
+      type: 'string',
+    },
+    gender: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 2,
+    },
+    picture: {
+      type: 'string',
+    },
+    city: {
+      type: 'string',
+    },
+  },
+}
+
 module.exports = {
   phoneNumberSchema,
   userInfoSchema,
+  phoneNumberVeriCodeSchema,
 }

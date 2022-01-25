@@ -1,4 +1,4 @@
-const { STRING, DATE, BOOLEAN } = require('sequelize')
+const { STRING, DATE, BOOLEAN, INTEGER } = require('sequelize')
 const seq = require('../db/seq/seq')
 
 const User = seq.define('user', {
@@ -24,7 +24,7 @@ const User = seq.define('user', {
     comment: '密码',
   },
   gender: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
     defaultValue: 0,
     comment: '性别（1 男性，2 女性，0 保密）',

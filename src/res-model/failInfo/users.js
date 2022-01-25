@@ -1,5 +1,11 @@
 // errno: 1200x
 module.exports = {
+  // 登录校验失败
+  loginCheckFailInfo: {
+    errno: 12001,
+    message: '登录校验失败',
+  },
+
   // 发送短信验证码过于频繁
   sendVericodeFrequentlyFailInfo: {
     errno: 12002,
@@ -22,6 +28,18 @@ module.exports = {
   createUserDbErrorFailInfo: {
     errno: 12005,
     message: '创建用户失败 db error',
+  },
+
+  // 修改用户信息，写入数据库，失败
+  updateUserInfoDbErrorFailInfo: {
+    errno: 12006,
+    message: '修改用户信息失败 db error',
+  },
+
+  // 修改用户信息，失败（数据库操作没问题）
+  updateUserInfoFailInfo: {
+    errno: 12007,
+    message: '修改用户信息失败',
   },
 
   // 用户被冻结
