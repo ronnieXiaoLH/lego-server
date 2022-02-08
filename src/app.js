@@ -11,6 +11,7 @@ const cors = require('./middleware/cors')
 const index = require('./routes/index')
 const user = require('./routes/user')
 const work = require('./routes/work')
+const template = require('./routes/template')
 
 const app = new Koa()
 
@@ -46,6 +47,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(index.routes(), index.allowedMethods())
 app.use(user.routes(), user.allowedMethods())
 app.use(work.routes(), work.allowedMethods())
+app.use(template.routes(), template.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
