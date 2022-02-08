@@ -4,7 +4,7 @@ const { isTestLocal } = require('../../src/utils/env')
 let request
 
 if (isTestLocal) {
-  const server = require('../../src/app')
+  const server = require('../../src/app').callback()
   request = supertest(server)
 }
 

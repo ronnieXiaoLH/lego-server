@@ -46,13 +46,13 @@ const Work = seq.define('work', {
     comment: '是否是模板',
   },
   status: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
     defaultValue: 1,
     comment: '状态：0-删除，1-未发布，2-发布，3-强制下线',
   },
   copiedCount: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
     defaultValue: 0,
     comment: '被复制的次数',
@@ -87,7 +87,7 @@ const Work = seq.define('work', {
 // 和 UserModel 建立关系
 Work.belongsTo(UserModel, {
   foreignKey: 'author',
-  targetKey: 'username'
+  targetKey: 'username',
 })
 
 module.exports = Work
