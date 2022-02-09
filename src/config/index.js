@@ -5,6 +5,7 @@ const {
   corsOrigin,
   msgVericodeTimeout,
   jwtExpiresIn,
+  h5Origin,
 } = require('./envs/dev')
 
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   corsOrigin,
   msgVericodeTimeout,
   jwtExpiresIn,
+  h5Origin,
 }

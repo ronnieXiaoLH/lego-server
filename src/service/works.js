@@ -1,6 +1,9 @@
 const _ = require('lodash')
 const { Op } = require('sequelize')
-const { WorkContentModel } = require('../models/WorkContentModel')
+const {
+  WorkContentModel,
+  WorkPublishContentModel,
+} = require('../models/WorkContentModel')
 const WorksModel = require('../models/WorksModels')
 const UserModel = require('../models/UserModel')
 
@@ -181,9 +184,39 @@ async function findWorkListService(whereOpt = {}, pageOpt = {}) {
   }
 }
 
+/**
+ * 更新发布内容
+ * @param {object} content 作品内容
+ * @param {string} publishContentId 作品 id
+ * @returns {string | null} publishContentId
+ */
+async function updatePublishContentService(content, publishContentId) {
+  if (!content) return null
+  const { components, props, setting } = content
+
+  // 已有发布内容 id，更新已发布的内容
+  if (publishContentId) {
+    await WorkPublishContentModel.findByIdAndUpdate(publishContentId, {
+      components,
+      props,
+      setting,
+    })
+    return publishContentId
+  }
+
+  // 还没有发布内容的 id，创建作品内容，并返回 id
+  const newPublishContent = await WorkPublishContentModel.create({
+    components,
+    props,
+    setting,
+  })
+  return newPublishContent._id.toString()
+}
+
 module.exports = {
   createWorkService,
   findOneWorkService,
   updateWorkService,
   findWorkListService,
+  updatePublishContentService,
 }

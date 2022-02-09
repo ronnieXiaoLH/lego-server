@@ -1,6 +1,7 @@
 const { createWorks, copyWorks } = require('../controller/works/createWorks')
 const { deleteWork, putBackWork } = require('../controller/works/deleteWorks')
 const { findOneWork, findMyWorks } = require('../controller/works/findWorks')
+const { publishWork } = require('../controller/works/publishWorks')
 const {
   updateWorks,
   transferWorks,
@@ -79,6 +80,22 @@ router.get('/', loginCheck, async (ctx) => {
     { title, status, isTemplate },
     { pageIndex, pageSize }
   )
+  ctx.body = res
+})
+
+// 发布作品
+router.post('/publish/:id', loginCheck, async (ctx) => {
+  const { id } = ctx.params
+  const { username } = ctx.userInfo
+  const res = await publishWork(id, username)
+  ctx.body = res
+})
+
+// 发布模板
+router.post('/publish-template/:id', loginCheck, async (ctx) => {
+  const { id } = ctx.params
+  const { username } = ctx.userInfo
+  const res = await publishWork(id, username, true)
   ctx.body = res
 })
 

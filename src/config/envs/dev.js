@@ -29,4 +29,7 @@ module.exports = {
 
   // jwt 过期时间
   jwtExpiresIn: '1d', // 1. 字符串，如 '1h' '2d'； 2. 数字，单位是 s
+
+  // 发布出来的 h5 域名
+  h5Origin: 'http://localhost:3001',
 }

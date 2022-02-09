@@ -9,7 +9,7 @@ const Channel = seq.define('channel', {
     comment: '渠道名称',
   },
   workId: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
     comment: '作品 id',
   },
