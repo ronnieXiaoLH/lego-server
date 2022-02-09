@@ -16,7 +16,7 @@ const Channel = seq.define('channel', {
   status: {
     type: INTEGER,
     allowNull: false,
-    default: 1,
+    defaultValue: 1,
     comment: '状态：0-删除，1-正常',
   },
 })
