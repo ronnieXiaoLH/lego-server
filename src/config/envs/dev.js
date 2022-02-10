@@ -35,8 +35,10 @@ module.exports = {
 
   // 阿里云 OSS 配置
   aliyunOSSConf: {
-    accessKeyId: 'LTAI5tPWF6tcvU7JceExPqME',
-    accessKeySecret: '62dikcHZjijMby9bf33VYrre0si5ss',
+    // LTAI5tPWF6tcvU7JceExPqME
+    accessKeyId: '',
+    // 62dikcHZjijMby9bf33VYrre0si5ss
+    accessKeySecret: '',
     bucket: 'my-lego',
     region: 'oss-cn-shenzhen',
   },
